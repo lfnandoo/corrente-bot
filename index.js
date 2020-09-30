@@ -1,7 +1,5 @@
 const puppeteer = require("puppeteer");
-
-const usernameOrEmail = "heroice.contato.oficial@gmail.com";
-const password = "26650010";
+const login = require("./login");
 
 (async () => {
   const browser = await puppeteer.launch();
@@ -11,8 +9,8 @@ const password = "26650010";
     "https://www.linkedin.com/login?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fin%2Fluizfernandoo&fromSignIn=true&trk=public_authwall_profile-login-link"
   );
 
-  await page.type("#username", usernameOrEmail);
-  await page.type("#password", password);
+  await page.type("#username", login.usernameOrEmail);
+  await page.type("#password", login.password);
   await page.focus("button");
   await page.$eval("button", (form) => form.click());
 
