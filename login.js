@@ -1,6 +1,7 @@
 const login = {
   usernameOrEmail: "",
-  password: ""
+  password: "",
+  user: ""
 };
 
 module.exports = login;

@@ -6,7 +6,7 @@ const login = require("./login");
   const page = await browser.newPage();
   await page.setViewport({ width: 100, height: 1000 });
   await page.goto(
-    "https://www.linkedin.com/login?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fin%2Fluizfernandoo&fromSignIn=true&trk=public_authwall_profile-login-link"
+    `https://www.linkedin.com/login?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fin%2F${login.user}&fromSignIn=true&trk=public_authwall_profile-login-link`
   );
 
   await page.type("#username", login.usernameOrEmail);
