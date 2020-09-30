@@ -1,4 +1,4 @@
 ## TASKS
 
-[] - Printar perfil
-[] - Salvar em PNG ou JPEG
+[X] - Printar perfil
+[X] - Salvar em PNG ou JPEG
