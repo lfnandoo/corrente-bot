@@ -1,19 +1,26 @@
 const puppeteer = require("puppeteer");
 const prompt = require("prompt-sync")();
 
-async function getScreenshot(page) {
+async function getScreenshots(page) {
   const user = prompt("User profile URL (https:/www.lindekin.com/in/xxx): ");
   await page.goto(`https://www.linkedin.com/in/${user}`);
 
   await page.waitForSelector(".pv-top-card");
+  console.log("======== Capturing screenshot ========");
   const div = await page.$(".pv-top-card");
 
-  console.log("======== Capturing screenshot ========");
   await div.screenshot({
     path: `${user}.png`,
     clip: { x: 0, y: 170, width: 300, height: 400 }
   });
   console.log("======== Screenshot saved ========");
+
+  const keepScreenshot = prompt("[y] for more screenshot's and [n] for stop: ");
+  if (keepScreenshot === "y" || keepScreenshot === "Y") {
+    await getScreenshots(page);
+  } else {
+    return console.log("======== Log off ========");
+  }
 }
 
 (async () => {
@@ -34,8 +41,8 @@ async function getScreenshot(page) {
   await page.$eval("button", (form) => form.click());
 
   await page.waitForNavigation();
-  await getScreenshot(page);
+  await getScreenshots(page);
 
-  console.log("======== Log off ========");
   await browser.close();
+  console.log("======== Sleeping ========");
 })();
