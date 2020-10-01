@@ -10,7 +10,7 @@ async function getScreenshots(page) {
   const div = await page.$(".pv-top-card");
 
   await div.screenshot({
-    path: `${user}.png`,
+    path: `./screenshots/${user}.png`,
     clip: { x: 0, y: 170, width: 300, height: 400 }
   });
   console.log("======== Screenshot saved ========");
