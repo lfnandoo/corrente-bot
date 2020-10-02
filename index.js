@@ -4,14 +4,14 @@ const prompt = require("prompt-sync")();
 async function getScreenshots(page) {
   const user = prompt("User profile URL (https:/www.lindekin.com/in/xxx): ");
   await page.goto(`https://www.linkedin.com/in/${user}`);
+  await page.addStyleTag({ path: "styles.css" });
 
   await page.waitForSelector(".pv-top-card");
   console.log("======== Capturing screenshot ========");
   const div = await page.$(".pv-top-card");
 
   await div.screenshot({
-    path: `./screenshots/${user}.png`,
-    clip: { x: 0, y: 170, width: 300, height: 400 }
+    path: `./screenshots/${user}.png`
   });
   console.log("======== Screenshot saved ========");
 

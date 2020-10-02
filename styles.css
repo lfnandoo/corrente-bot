@@ -1,0 +1,45 @@
+* {
+  font-size: 100% !important;
+}
+
+.pv-top-card {
+  height: 900px !important;
+}
+
+.ph5 div {
+  margin-bottom: 10px !important;
+}
+
+.flex-column {
+  display: none !important;
+}
+
+.msg-overlay-list-bubble {
+  display: none !important;
+}
+
+.pv-top-card__photo-wrapper {
+  width: 248px !important;
+  height: 248px !important;
+}
+
+.presence-entity--size-9 {
+  width: 240px !important;
+  height: 240px !important;
+}
+
+.t-24 {
+  font-size: 4rem !important;
+}
+
+.t-18 {
+  font-size: 2.4rem !important;
+}
+
+.t-16 {
+  font-size: 1.6rem !important;
+}
+
+.t-14 {
+  font-size: 1.6rem !important;
+}
