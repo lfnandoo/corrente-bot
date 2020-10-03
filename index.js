@@ -41,7 +41,7 @@ const linkedinNames = new Array();
   console.log("======== Output text ========".bold.yellow);
   console.log(" ");
   linkedinNames.map((name) => {
-    console.log(name.green);
+    console.log(`@${name}`.green);
     console.log(" ");
   });
   console.log("======== Output text ========".bold.yellow);
