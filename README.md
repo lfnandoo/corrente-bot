@@ -1,5 +1,8 @@
+<h1 align="center">
+    <img alt="Logo" title="#CorrenteDoBom" src="./.github/logo.png"  />
+</h1>
 <h4 align="center">
-  🚀 Corrente do Bem Bot - Puppeteer and PDFKit
+  🤖 Corrente do Bem Bot 🤖
 </h4>
 <h4 align="center">
  🔥 <a href="#-demo">Demo</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
@@ -25,7 +28,7 @@ Project made with:
 
 ## 🔥 Demo
 
-<img alt="Demo" src="./demo.gif" width="100%">
+<img alt="Demo" src="./.github/demo.gif" width="100%">
 
 ## 📌 Run
 
@@ -33,6 +36,7 @@ For run this project you nedded Git, Node.js and Npm =)
 ```bash
 ## Clone repository
 $ git clone https://github.com/lfnandoo/corrente-bot
+
 ## Enter in repository
 $ cd corrente-bot
 
