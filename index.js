@@ -1,29 +1,12 @@
 const puppeteer = require("puppeteer");
 const prompt = require("prompt-sync")();
+const PDFDocument = require("pdfkit");
+const fs = require("fs");
 
-async function getScreenshots(page) {
-  const user = prompt("User profile URL (https:/www.lindekin.com/in/xxx): ");
-  await page.goto(`https://www.linkedin.com/in/${user}`);
-  await page.addStyleTag({ path: "styles.css" });
-
-  await page.waitForSelector(".pv-top-card");
-  console.log("======== Capturing screenshot ========");
-  const div = await page.$(".pv-top-card");
-
-  await div.screenshot({
-    path: `./screenshots/${user}.png`
-  });
-  console.log("======== Screenshot saved ========");
-
-  const keepScreenshot = prompt("[y] for more screenshot's and [n] for stop: ");
-  if (keepScreenshot === "y" || keepScreenshot === "Y") {
-    await getScreenshots(page);
-  } else {
-    return console.log("======== Log off ========");
-  }
-}
+const fileNames = new Array();
 
 (async () => {
+  console.log("======== If there is any typo, the bot will fail ========");
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
   await page.setViewport({ width: 100, height: 1000 });
@@ -44,5 +27,50 @@ async function getScreenshots(page) {
   await getScreenshots(page);
 
   await browser.close();
-  console.log("======== Sleeping ========");
+  console.log("======== Creating PDF ========");
+  await createPDF();
+  console.log("======== Made by: https://github.com/lfnandoo ========");
 })();
+
+async function getScreenshots(page) {
+  const user = prompt("User profile URL (https:/www.lindekin.com/in/xxx): ");
+  await page.goto(`https://www.linkedin.com/in/${user}`);
+  await page.addStyleTag({ path: "styles.css" });
+
+  await page.waitForSelector(".pv-top-card");
+  console.log("======== Capturing screenshot ========");
+  const div = await page.$(".pv-top-card");
+
+  await div.screenshot({
+    path: `./screenshots/${user}.png`
+  });
+  console.log("======== Screenshot saved ========");
+  fileNames.push(user);
+
+  const keepScreenshot = prompt("[y] for more screenshot's and [n] for stop: ");
+  if (keepScreenshot === "y" || keepScreenshot === "Y") {
+    await getScreenshots(page);
+  } else {
+    return console.log("======== Closing browser ========");
+  }
+}
+
+async function createPDF() {
+  const doc = new PDFDocument({
+    size: [350, 350]
+  });
+
+  doc.pipe(fs.createWriteStream("./result/output.pdf"));
+
+  doc.text("Corrente bot!", 100, 100);
+
+  fileNames.map((fileName) => {
+    doc.addPage().image(`screenshots/${fileName}.png`, {
+      fit: [210, 290]
+    });
+  });
+
+  doc.end();
+
+  return console.log("======== FINISHED ========");
+}
