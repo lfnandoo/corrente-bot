@@ -37,14 +37,16 @@ const linkedinNames = new Array();
   console.log("======== Creating PDF ========".bold.yellow);
   await createPDF();
 
+  console.log(" ");
   console.log("======== Output text ========".bold.yellow);
   console.log(" ");
   linkedinNames.map((name) => {
     console.log(name.green);
     console.log(" ");
   });
-
+  console.log("======== Output text ========".bold.yellow);
   console.log(" ");
+
   console.log(
     "======== Made by: https://github.com/lfnandoo ========".bold.green
   );
@@ -60,7 +62,7 @@ async function getScreenshots(page) {
 
   await page.waitForSelector(".pv-top-card");
   await page.waitForSelector(".inline.t-24");
-  console.log("======== Capturing screenshot ========".yellow);
+  console.log("======== Capturing screenshot ========".bold.yellow);
   const div = await page.$(".pv-top-card");
   const li = await page.$(".inline.t-24");
   const name = await (await li.getProperty("innerText")).jsonValue();
@@ -69,7 +71,7 @@ async function getScreenshots(page) {
   await div.screenshot({
     path: `./screenshots/${user}.png`
   });
-  console.log("======== Screenshot saved ========".green);
+  console.log("======== Screenshot saved ========".bold.green);
   fileNames.push(user);
 
   const keepScreenshot = prompt(
@@ -78,7 +80,7 @@ async function getScreenshots(page) {
   if (keepScreenshot === "y" || keepScreenshot === "Y") {
     await getScreenshots(page);
   } else {
-    return console.log("======== Closing browser ========".green);
+    return console.log("======== Closing browser ========".bold.green);
   }
 }
 
@@ -99,5 +101,5 @@ async function createPDF() {
 
   doc.end();
 
-  return console.log("======== PDF Created ========".green);
+  return console.log("======== PDF Created ========".bold.green);
 }
