@@ -7,7 +7,7 @@
 [X] - Inserir logs no console <br/>
 [X] - Função para continuar as screenshots ou parar o bot <br/>
 [X] - Criar uma pasta para as screenshots <br/>
-[] - Criar um readme <br/>
+[X] - Criar um readme <br/>
 [X] - Criar um pdf com todas as screenshots <br/>
 [] - Validar login do linkedin <br/>
 [X] - Cores nas logs <br/>
