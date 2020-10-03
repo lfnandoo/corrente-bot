@@ -5,7 +5,6 @@
 [X] - Salvar num modelo menor <br/>
 [X] - Inputar dados do usuário <br/>
 [X] - Inserir logs no console <br/>
-[] - Refatorar o código para funções single function <br/>
 [X] - Função para continuar as screenshots ou parar o bot <br/>
 [X] - Criar uma pasta para as screenshots <br/>
 [] - Criar um readme <br/>
