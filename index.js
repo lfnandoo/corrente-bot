@@ -4,6 +4,7 @@ const PDFDocument = require("pdfkit");
 const fs = require("fs");
 
 const fileNames = new Array();
+const linkedinNames = new Array();
 
 (async () => {
   console.log("======== If there is any typo, the bot will fail ========");
@@ -17,8 +18,10 @@ const fileNames = new Array();
 
   const userNameOrEmail = prompt("Linkedin username or email: ");
   await page.type("#username", userNameOrEmail);
+
   const password = prompt("Linkedin password: ");
   await page.type("#password", password);
+
   await page.focus("button");
   console.log("======== Login ========");
   await page.$eval("button", (form) => form.click());
@@ -27,19 +30,34 @@ const fileNames = new Array();
   await getScreenshots(page);
 
   await browser.close();
+
   console.log("======== Creating PDF ========");
   await createPDF();
+
+  console.log("======== Output text ========");
+  console.log(" ");
+  linkedinNames.map((name) => {
+    console.log(name);
+    console.log(" ");
+  });
+
+  console.log(" ");
   console.log("======== Made by: https://github.com/lfnandoo ========");
 })();
 
 async function getScreenshots(page) {
   const user = prompt("User profile URL (https:/www.lindekin.com/in/xxx): ");
+  const jobRole = prompt("User job role: ");
   await page.goto(`https://www.linkedin.com/in/${user}`);
   await page.addStyleTag({ path: "styles.css" });
 
   await page.waitForSelector(".pv-top-card");
+  await page.waitForSelector(".inline.t-24");
   console.log("======== Capturing screenshot ========");
   const div = await page.$(".pv-top-card");
+  const li = await page.$(".inline.t-24");
+  const name = await (await li.getProperty("innerText")).jsonValue();
+  linkedinNames.push(`${name} ${jobRole}`);
 
   await div.screenshot({
     path: `./screenshots/${user}.png`
@@ -47,7 +65,7 @@ async function getScreenshots(page) {
   console.log("======== Screenshot saved ========");
   fileNames.push(user);
 
-  const keepScreenshot = prompt("[y] for more screenshot's and [n] for stop: ");
+  const keepScreenshot = prompt("[y] for more screenshot's and [s] for stop: ");
   if (keepScreenshot === "y" || keepScreenshot === "Y") {
     await getScreenshots(page);
   } else {
@@ -72,5 +90,5 @@ async function createPDF() {
 
   doc.end();
 
-  return console.log("======== FINISHED ========");
+  return console.log("======== PDF Created ========");
 }
