@@ -91,7 +91,13 @@ async function createPDF() {
 
   doc.pipe(fs.createWriteStream("./result/output.pdf"));
 
-  doc.text("Corrente bot!", 100, 100);
+  doc
+    .image("./.github/logo.png", {
+      fit: [210, 250]
+    })
+    .image("./.github/credits.png", {
+      fit: [210, 250]
+    });
 
   fileNames.map((fileName) => {
     doc.addPage().image(`screenshots/${fileName}.png`, {
