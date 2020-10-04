@@ -27,12 +27,12 @@ Project made with:
 - Colors
 
 ## 🔥 Demo
-
+<em>Note: use for login, email: <strong>'correntebot@gmail.com'</strong> and password: <strong>'corrente'</strong>, if you prefer, use your data.</em> 
 <img alt="Demo" src="./.github/demo.gif" width="100%">
 
 ## 📌 Run
 
-For run this project you nedded Git, Node.js and Npm =)
+For run this project you nedded [Git](https://git-scm.com/downloads), [Node.js(lts-version)](https://nodejs.org/pt-br/) =)
 ```bash
 ## Clone repository
 $ git clone https://github.com/lfnandoo/corrente-bot
