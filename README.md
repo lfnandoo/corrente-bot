@@ -27,7 +27,7 @@ Project made with:
 - Colors
 
 ## 🔥 Demo
-<em>Note: use for login, email: <strong>'correntebot@gmail.com'</strong> and password: <strong>'corrente'</strong>, if you prefer, use your data.</em> 
+<em>Note: use for login, email: <strong>'correntebot@gmail.com'</strong> and password: <strong>'corrente'</strong>, but if you prefer, use your data.</em> 
 <img alt="Demo" src="./.github/demo.gif" width="100%">
 
 ## 📌 Run
